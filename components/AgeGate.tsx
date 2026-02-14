@@ -8,30 +8,28 @@ interface AgeGateProps {
 
 const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
   const [step, setStep] = useState<1 | 2>(1);
-  const [age, setAge] = useState<string>('');
+  const [ageInput, setAgeInput] = useState<string>('');
   const [month, setMonth] = useState<string>('');
   const [year, setYear] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   const handleConfirmAccess = () => {
-    const ageNum = parseInt(age);
+    const ageNum = parseInt(ageInput);
     const monthNum = parseInt(month);
     const yearNum = parseInt(year);
 
-    if (!age || !month || !year || isNaN(ageNum) || isNaN(monthNum) || isNaN(yearNum)) {
-      setError('Por favor, preencha todos os campos.');
+    if (!ageInput || !month || !year || isNaN(ageNum) || isNaN(monthNum) || isNaN(yearNum)) {
+      setError('Por favor, preencha todos os campos corretamente.');
       return;
     }
 
-    // Using a simple logic based on the birth year for better UX matching the visual
-    const currentYear = new Date().getFullYear();
-    const calculatedAge = currentYear - yearNum;
-
-    if (calculatedAge >= 18 && ageNum >= 18) {
+    // Usando o validador preciso que considera dia, mês e ano
+    // Como o input de dia não está no form, usamos dia 1 para a verificação básica de mês/ano
+    if (isAdult(1, monthNum, yearNum)) {
       localStorage.setItem('ageVerified', 'true');
       onVerify();
     } else {
-      setError('Você deve ter mais de 18 anos.');
+      setError('Você deve ter mais de 18 anos para acessar.');
     }
   };
 
@@ -80,7 +78,7 @@ const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0091ff] px-6">
-      <div className="bg-white rounded-[40px] shadow-2xl p-8 max-w-sm w-full flex flex-col items-center relative overflow-hidden">
+      <div className="bg-white rounded-[40px] shadow-2xl p-8 max-sm w-full flex flex-col items-center relative overflow-hidden">
         
         {/* Back Button */}
         <button 
@@ -106,9 +104,9 @@ const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
               <input
                 type="number"
                 placeholder="21"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                className="bg-[#f8f9fa] border-none rounded-2xl p-4 text-center font-bold text-[#d1d5db] focus:ring-2 focus:ring-[#0091ff] focus:text-[#1a1a1a] outline-none transition-all placeholder:text-[#e5e7eb]"
+                value={ageInput}
+                onChange={(e) => setAgeInput(e.target.value)}
+                className="bg-[#f8f9fa] border-none rounded-2xl p-4 text-center font-bold text-[#1a1a1a] focus:ring-2 focus:ring-[#0091ff] outline-none transition-all placeholder:text-[#e5e7eb]"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -138,7 +136,7 @@ const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
               placeholder="2000"
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="bg-[#f8f9fa] border-none rounded-2xl p-4 text-center font-bold text-[#d1d5db] focus:ring-2 focus:ring-[#0091ff] focus:text-[#1a1a1a] outline-none transition-all placeholder:text-[#e5e7eb]"
+              className="bg-[#f8f9fa] border-none rounded-2xl p-4 text-center font-bold text-[#1a1a1a] focus:ring-2 focus:ring-[#0091ff] outline-none transition-all placeholder:text-[#e5e7eb]"
             />
           </div>
         </div>

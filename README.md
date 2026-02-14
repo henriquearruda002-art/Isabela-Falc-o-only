@@ -1,20 +1,36 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+# Isabela Falcão 🌸 - Perfil Exclusivo
 
-This contains everything you need to run your app locally.
+Este projeto é uma aplicação de perfil de criador de conteúdo com verificação de idade (Age Gate) integrada, desenvolvida em React e TypeScript.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Di16L8WyKoBQ812n8G9MTnZfJkxx8zsO
+## 🚀 Tecnologias
 
-## Run Locally
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **FontAwesome**
 
-**Prerequisites:**  Node.js
+## 🛠️ Instalação e Desenvolvimento
 
+1. Clone o repositório.
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🌐 Deploy na Vercel
+
+O projeto está pronto para ser enviado para a Vercel.
+
+1. Conecte seu repositório GitHub à Vercel.
+2. A Vercel detectará automaticamente as configurações do Vite.
+3. O comando de build será `npm run build` e o diretório de saída será `dist`.
+
+## 🔒 Segurança
+
+A aplicação conta com um sistema de Age Gate que impede o acesso de menores de 18 anos ao conteúdo explícito, utilizando validação de data de nascimento.
