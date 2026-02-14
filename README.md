@@ -1,36 +1,32 @@
 
-# Isabela Falcão 🌸 - Perfil Exclusivo
+# Creator Access & Age Gate 🌸
 
-Este projeto é uma aplicação de perfil de criador de conteúdo com verificação de idade (Age Gate) integrada, desenvolvida em React e TypeScript.
+Aplicação de perfil premium com sistema de verificação de idade seguro.
 
-## 🚀 Tecnologias
+## 🚀 Como Iniciar
 
-- **React 19**
-- **TypeScript**
-- **Vite**
-- **Tailwind CSS**
-- **FontAwesome**
-
-## 🛠️ Instalação e Desenvolvimento
-
-1. Clone o repositório.
-2. Instale as dependências:
+1. Instale as dependências:
    ```bash
    npm install
    ```
-3. Inicie o servidor de desenvolvimento:
+2. Inicie o ambiente de desenvolvimento:
    ```bash
    npm run dev
    ```
 
 ## 🌐 Deploy na Vercel
 
-O projeto está pronto para ser enviado para a Vercel.
+Este projeto está otimizado para deploy automático:
 
-1. Conecte seu repositório GitHub à Vercel.
-2. A Vercel detectará automaticamente as configurações do Vite.
-3. O comando de build será `npm run build` e o diretório de saída será `dist`.
+1. Suba o código para o GitHub.
+2. Na Vercel, selecione o repositório.
+3. O framework será detectado como **Vite**.
+4. Configure o diretório de saída como `dist`.
+5. Clique em **Deploy**.
 
-## 🔒 Segurança
+## 📁 Estrutura do Projeto
 
-A aplicação conta com um sistema de Age Gate que impede o acesso de menores de 18 anos ao conteúdo explícito, utilizando validação de data de nascimento.
+- `/components`: Elementos de UI (AgeGate, ProfilePage).
+- `/utils`: Lógica de validação.
+- `index.tsx`: Ponto de entrada da aplicação.
+- `App.tsx`: Gerenciador de estado global e roteamento.
